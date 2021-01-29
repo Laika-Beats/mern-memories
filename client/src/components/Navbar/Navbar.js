@@ -48,7 +48,9 @@ function Navbar() {
             to="/auth"
             variant="contained"
             color="primary"
-          ></Button>
+          >
+            Sign In
+          </Button>
         )}
       </Toolbar>
     </AppBar>
