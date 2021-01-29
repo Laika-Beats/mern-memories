@@ -9,23 +9,16 @@ import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
 
 function App() {
-  const [currentId, setCurrentId] = useState(0);
-
-  const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts);
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [currentId, dispatch, posts]);
   return (
-    <Container maxwidth="lg">
-      <Navbar />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/auth" exact component={Auth} />
-      </Switch>
-      <Home currentId={currentId} setCurrentId={setCurrentId} posts={posts} />
-    </Container>
+    <BrowserRouter>
+      <Container maxwidth="lg">
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/auth" exact component={Auth} />
+        </Switch>
+      </Container>
+    </BrowserRouter>
   );
 }
 
