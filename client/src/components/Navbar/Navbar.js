@@ -19,7 +19,7 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const token = user?.token;
+    // const token = user?.token;
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
@@ -35,7 +35,6 @@ function Navbar() {
         >
           Memories
         </Typography>
-        {/* <img className={classes.image} src="" alt="memories" height="60" /> */}
       </div>
       <Toolbar className={classes.toolbar}>
         {user ? (
