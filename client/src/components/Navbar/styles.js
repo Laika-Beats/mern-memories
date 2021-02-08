@@ -40,4 +40,29 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  [theme.breakpoints.down("xs")]: {
+    brandContainer: {
+      display: "none",
+    },
+    userName: {
+      fontSize: "23px",
+      marginLeft: "40px",
+      marginRight: "30px",
+    },
+    logout: {
+      margin: " 13px 40px 0 0",
+      fontSize: "10px",
+      padding: "0",
+      height: "40px;",
+    },
+    purple: {
+      height: "70px;",
+      width: "70px",
+      marginLeft: "50px",
+    },
+    toolbar: {
+      width: "190px",
+      marginLeft: "105px",
+    },
+  },
 }));
