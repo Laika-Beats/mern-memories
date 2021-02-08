@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
@@ -19,9 +20,36 @@ import useStyles from "./styles";
 function Post({ post, setCurrentId, posts }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  function likeHandler() {
-    dispatch(likePost(post._id));
-  }
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  const Likes = () => {
+    if (post.likes.length > 0) {
+      return post.likes.find(
+        (like) => like === (user?.result?.googleId || user?.result?._id)
+      ) ? (
+        <>
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp;
+          {post.likes.length > 2
+            ? `You and ${post.likes.length - 1} others`
+            : `${post.likes.length} like${post.likes.length > 1 ? "s" : ""}`}
+        </>
+      ) : (
+        <>
+          <ThumbUpAltOutlined fontSize="small" />
+          &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbUpAltOutlined fontSize="small" />
+        &nbsp;Like
+      </>
+    );
+  };
+
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -58,22 +86,30 @@ function Post({ post, setCurrentId, posts }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button onClick={likeHandler} size="small" color="primary">
-          <ThumbUpAltIcon fontSize="small" />
-          &nbsp; Like &nbsp;
-          {post.likeCount}
-        </Button>
         <Button
+          onClick={() => {
+            dispatch(likePost(post._id));
+          }}
           size="small"
           color="primary"
-          onClick={() => {
-            dispatch(deletePost(post._id));
-            return posts;
-          }}
+          disabled={!user?.result}
         >
-          <DeleteIcon fontSize="small" />
-          Delete
+          <Likes />
         </Button>
+        {(user?.result?.googleId === post?.creator ||
+          user?.result?._id === post?.creator) && (
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              dispatch(deletePost(post._id));
+              return posts;
+            }}
+          >
+            <DeleteIcon fontSize="small" />
+            Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
