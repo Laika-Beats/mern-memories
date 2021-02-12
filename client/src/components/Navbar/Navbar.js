@@ -41,7 +41,7 @@ function Navbar() {
           variant="h2"
           align="center"
         >
-          Memories
+          Digital Memories
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>

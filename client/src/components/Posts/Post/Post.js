@@ -77,7 +77,7 @@ function Post({ post, setCurrentId, posts }) {
       )}
 
       <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="body2">
           {post.tags.map((tag) => `#${tag} `)}{" "}
         </Typography>
       </div>
@@ -85,7 +85,7 @@ function Post({ post, setCurrentId, posts }) {
         {post.title}
       </Typography>
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" component="p">
           {post.message}
         </Typography>
       </CardContent>
@@ -103,14 +103,14 @@ function Post({ post, setCurrentId, posts }) {
         {(user?.result?.googleId === post?.creator ||
           user?.result?._id === post?.creator) && (
           <Button
+            className={classes.btnC}
             size="small"
-            color="primary"
             onClick={() => {
               dispatch(deletePost(post._id));
               return posts;
             }}
           >
-            <DeleteIcon fontSize="small" />
+            <DeleteIcon className={classes.btnC} fontSize="small" />
             Delete
           </Button>
         )}

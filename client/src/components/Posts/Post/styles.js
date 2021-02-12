@@ -17,7 +17,8 @@ export default makeStyles({
     borderRadius: "15px",
     height: "100%",
     position: "relative",
-    background: "rgba(255, 255, 255, 0.75)",
+    background: "rgba(31, 40, 51, 0.75)",
+    color: "#fff",
     // border: "solid black 1px",
   },
   overlay: {
@@ -39,13 +40,18 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
     margin: "20px",
+    color: "#fff",
   },
   title: {
     padding: "0 16px",
+    color: "#66fcf1",
   },
   cardActions: {
     padding: "0 16px 8px 16px",
     display: "flex",
     justifyContent: "space-between",
+  },
+  btnC: {
+    color: "#66fcf1",
   },
 });
