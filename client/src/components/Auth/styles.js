@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "rgba(31, 40, 51)",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -23,8 +23,24 @@ export default makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    color: "#66fcf1",
+    background: "rgba(31, 40, 51)",
+    "&:hover": {
+      backgroundColor: "#66fcf1",
+      color: "#FFF",
+    },
   },
   googleButton: {
     marginBottom: theme.spacing(2),
+    color: "#66fcf1",
+    background: "rgba(31, 40, 51)",
+    "&:hover": {
+      backgroundColor: "#66fcf1",
+      color: "#FFF",
+    },
+  },
+  field: {
+    background: "#fff",
+    color: "#66fcf1",
   },
 }));

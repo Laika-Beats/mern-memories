@@ -76,10 +76,11 @@ function Auth() {
         </Avatar>
         <Typography variant="h5">{isSignup ? "Sign Up" : "Sign In"}</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+          <Grid className={classes.field} container spacing={2}>
             {isSignup && (
               <>
                 <Input
+                  className={classes.field}
                   name="firstName"
                   label="First Name"
                   handleChange={handleChange}
@@ -87,6 +88,7 @@ function Auth() {
                   half
                 />
                 <Input
+                  className={classes.field}
                   name="lastName"
                   label="Last Name"
                   handleChange={handleChange}
@@ -95,12 +97,14 @@ function Auth() {
               </>
             )}
             <Input
+              className={classes.field}
               name="email"
               label="Email Address"
               handleChange={handleChange}
               type="email"
             />
             <Input
+              className={classes.field}
               name="password"
               label="Password"
               handleChange={handleChange}
@@ -109,6 +113,7 @@ function Auth() {
             />
             {isSignup && (
               <Input
+                className={classes.field}
                 name="confirmPassword"
                 label="Repeat Password"
                 handleChange={handleChange}

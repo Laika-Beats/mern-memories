@@ -96,7 +96,6 @@ function Post({ post, setCurrentId, posts }) {
             dispatch(likePost(post._id));
           }}
           size="small"
-          color="#66fcf1"
           disabled={!user?.result}
         >
           <Likes />

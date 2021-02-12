@@ -25,6 +25,10 @@ export default makeStyles((theme) => ({
     color: "#66fcf1",
     background: "#1f2833",
     border: "solid 1px #66fcf1 ",
+    "&:hover": {
+      backgroundColor: "#66fcf1",
+      color: "#FFF",
+    },
   },
   field: {
     background: "#fff",

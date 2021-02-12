@@ -49,6 +49,10 @@ export default makeStyles((theme) => ({
   logout: {
     background: "none",
     border: "solid 1px #66fcf1 ",
+    "&:hover": {
+      backgroundColor: "#66fcf1",
+      color: "#FFF",
+    },
   },
   [theme.breakpoints.down("sm")]: {
     heading: {

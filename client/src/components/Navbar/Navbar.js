@@ -70,6 +70,7 @@ function Navbar() {
             component={Link}
             to="/auth"
             variant="contained"
+            className={classes.logout}
             color="primary"
           >
             Sign In
