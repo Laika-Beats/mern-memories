@@ -73,6 +73,7 @@ function Form({ currentId, setCurrentId }) {
           {currentId ? "Editing" : "Creating"} a Memory
         </Typography>
         <TextField
+          className={classes.field}
           name="title"
           variant="outlined"
           label="Title"
@@ -81,6 +82,7 @@ function Form({ currentId, setCurrentId }) {
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
         <TextField
+          className={classes.field}
           name="message"
           variant="outlined"
           label="Message"
@@ -91,6 +93,7 @@ function Form({ currentId, setCurrentId }) {
           }
         />
         <TextField
+          className={classes.field}
           name="tags"
           variant="outlined"
           label="Tags"
@@ -115,7 +118,7 @@ function Form({ currentId, setCurrentId }) {
         <Button
           className={classes.buttonSubmit}
           variant="contained"
-          color="primary"
+          color="white"
           size="large"
           type="submit"
           fullWidth
@@ -123,8 +126,8 @@ function Form({ currentId, setCurrentId }) {
           Submit
         </Button>
         <Button
+          className={classes.buttonSubmit}
           variant="contained"
-          color="secondary"
           size="small"
           onClick={clear}
           fullWidth

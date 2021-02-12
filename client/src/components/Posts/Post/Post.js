@@ -91,11 +91,12 @@ function Post({ post, setCurrentId, posts }) {
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button
+          className={classes.btnC}
           onClick={() => {
             dispatch(likePost(post._id));
           }}
           size="small"
-          color="primary"
+          color="#66fcf1"
           disabled={!user?.result}
         >
           <Likes />
@@ -110,7 +111,7 @@ function Post({ post, setCurrentId, posts }) {
               return posts;
             }}
           >
-            <DeleteIcon className={classes.btnC} fontSize="small" />
+            <DeleteIcon fontSize="small" />
             Delete
           </Button>
         )}

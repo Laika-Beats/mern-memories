@@ -8,11 +8,13 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    background: "rgba(31, 40, 51, 0.35)",
   },
   form: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    color: "#66fcf1",
   },
   fileInput: {
     width: "97%",
@@ -20,5 +22,22 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+    color: "#66fcf1",
+    background: "#1f2833",
+    border: "solid 1px #66fcf1 ",
+  },
+  field: {
+    background: "#fff",
+    color: "#66fcf1",
+  },
+  [theme.breakpoints.down("sm")]: {
+    paper: {
+      width: "400px",
+    },
+  },
+  [theme.breakpoints.down("xs")]: {
+    paper: {
+      width: "100%",
+    },
   },
 }));
