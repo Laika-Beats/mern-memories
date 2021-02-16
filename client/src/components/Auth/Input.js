@@ -15,7 +15,6 @@ function Input({
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>
       <TextField
-        fontColor="white"
         name={name}
         onChange={handleChange}
         variant="outlined"

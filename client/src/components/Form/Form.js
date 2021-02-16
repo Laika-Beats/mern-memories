@@ -118,7 +118,6 @@ function Form({ currentId, setCurrentId }) {
         <Button
           className={classes.buttonSubmit}
           variant="contained"
-          color="white"
           size="large"
           type="submit"
           fullWidth
