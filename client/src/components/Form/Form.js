@@ -1,31 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { createPost, updatePost } from "../../actions/posts";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
-import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
-import { createPost, updatePost } from "../../actions/posts";
 
 // get the current ID of the post we're clicking
 
-function Form({ currentId, setCurrentId }) {
-  const [postData, setPostData] = useState({
-    title: "",
-    message: "",
-    tags: "",
-    selectedFile: "",
-  });
-
-  const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
-  );
-
+function Form({ currentId, setCurrentId, postData, setPostData, dispatch }) {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-
-  useEffect(() => {
-    if (post) setPostData(post);
-  }, [post]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

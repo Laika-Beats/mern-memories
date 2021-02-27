@@ -8,14 +8,30 @@ import { getPosts } from "../../actions/posts";
 import useStyles from "../../styles";
 
 function Home() {
-  const [currentId, setCurrentId] = useState(0);
   const classes = useStyles();
-  const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+
+  const [currentId, setCurrentId] = useState(0);
+  const [postData, setPostData] = useState({
+    title: "",
+    message: "",
+    tags: "",
+    selectedFile: "",
+  });
+
+  const posts = useSelector((state) => state.posts);
+
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((p) => p._id === currentId) : null
+  );
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch, posts]);
+  }, [dispatch, currentId]);
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
 
   return (
     <Grow in>
@@ -33,10 +49,17 @@ function Home() {
               setCurrentId={setCurrentId}
               getPosts={getPosts}
               posts={posts}
+              dispatch={dispatch}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Form currentId={currentId} setCurrentId={setCurrentId} />
+            <Form
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+              postData={postData}
+              setPostData={setPostData}
+              dispatch={dispatch}
+            />
           </Grid>
         </Grid>
       </Container>

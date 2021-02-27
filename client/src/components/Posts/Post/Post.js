@@ -1,6 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { deletePost, likePost } from "../../../actions/posts";
+import { deletePost, likePost, getPosts } from "../../../actions/posts";
 import {
   Card,
   CardActions,
@@ -14,13 +13,18 @@ import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
-
 import useStyles from "./styles";
 
-function Post({ post, setCurrentId, posts }) {
+function Post({ post, setCurrentId, dispatch }) {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
+
+  const likeHandler = () => {
+    dispatch(likePost(post._id));
+  };
+  const deleteHandler = () => {
+    dispatch(deletePost(post._id)).then(dispatch(getPosts()));
+  };
 
   const Likes = () => {
     if (post.likes.length > 0) {
@@ -92,9 +96,7 @@ function Post({ post, setCurrentId, posts }) {
       <CardActions className={classes.cardActions}>
         <Button
           className={classes.btnC}
-          onClick={() => {
-            dispatch(likePost(post._id));
-          }}
+          onClick={likeHandler}
           size="small"
           disabled={!user?.result}
         >
@@ -102,14 +104,7 @@ function Post({ post, setCurrentId, posts }) {
         </Button>
         {(user?.result?.googleId === post?.creator ||
           user?.result?._id === post?.creator) && (
-          <Button
-            className={classes.btnC}
-            size="small"
-            onClick={() => {
-              dispatch(deletePost(post._id));
-              return posts;
-            }}
-          >
+          <Button className={classes.btnC} size="small" onClick={deleteHandler}>
             <DeleteIcon fontSize="small" />
             Delete
           </Button>

@@ -1,10 +1,9 @@
 import React from "react";
 import { Grid, CircularProgress } from "@material-ui/core";
-
 import Post from "./Post/Post";
 import useStyles from "./styles";
 
-function Posts({ setCurrentId, currentId, getPosts, posts }) {
+function Posts({ setCurrentId, currentId, getPosts, posts, dispatch }) {
   const classes = useStyles();
 
   return !posts.length ? (
@@ -24,6 +23,7 @@ function Posts({ setCurrentId, currentId, getPosts, posts }) {
             setCurrentId={setCurrentId}
             getPosts={getPosts}
             posts={posts}
+            dispatch={dispatch}
           />
         </Grid>
       ))}
