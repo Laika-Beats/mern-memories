@@ -5,6 +5,7 @@ import cors from "cors";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 import dotenv from "dotenv";
+import path from "path";
 
 const app = express();
 dotenv.config();
@@ -23,11 +24,16 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() =>
+  .then(() => {
+    app.get("*", (req, res) => {
+      res.sendFile(
+        path.join(process.cwd("./"), "client", "build", "index.html")
+      );
+    });
     app.listen(PORT, () =>
       console.log(`🌎🌎🌎  Server running on port: ${PORT} 🌎🌎🌎 `)
-    )
-  )
+    );
+  })
   .catch((error) => console.log(error.message));
 
 mongoose.set("useFindAndModify", false);
