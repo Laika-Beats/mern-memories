@@ -1,5 +1,5 @@
 import React from "react";
-import { deletePost, likePost, getPosts } from "../../../actions/posts";
+import { deletePost, likePost } from "../../../actions/posts";
 import {
   Card,
   CardActions,
@@ -23,7 +23,7 @@ function Post({ post, setCurrentId, dispatch }) {
     dispatch(likePost(post._id));
   };
   const deleteHandler = () => {
-    dispatch(deletePost(post._id)).then(dispatch(getPosts()));
+    dispatch(deletePost(post._id));
   };
 
   const Likes = () => {

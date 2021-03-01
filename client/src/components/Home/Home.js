@@ -27,7 +27,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch, currentId]);
+  }, [dispatch, setCurrentId]);
 
   useEffect(() => {
     if (post) setPostData(post);
